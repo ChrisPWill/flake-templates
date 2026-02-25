@@ -1,3 +1,25 @@
-# https://numtide.github.io/devshell
+imports = [ "./devshells/base.toml" ]
+packages = ["bacon", "miniserve"]
+motd = """
+{202}🔨 Welcome to devshell{reset}
+$(type -p menu &>/dev/null && menu)
+
+Check out 🥓 "bacon --list-jobs" for watch 👀 commands
+"""
+
 [[commands]]
-package = "hello"
+name = "format-all"
+category = "linting"
+help = "Format all files (nix, rust, toml) in the project"
+command = """\
+  alejandra .; \
+  cargo clippy --fix --allow-dirty; \
+  cargo fmt; \
+  taplo fmt bacon.toml devshell.toml Cargo.toml "*/Cargo.toml"; \
+"""
+
+[[commands]]
+name = "serve-coverage"
+category = "testing"
+help = "Serve the coverage report"
+command = "miniserve ./target/llvm-cov/html"
