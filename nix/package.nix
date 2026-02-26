@@ -6,7 +6,7 @@
   crane = inputs.crane;
   craneLib = crane.mkLib pkgs;
   commonArgs = {
-    src = craneLib.cleanCargoSource ./.;
+    src = craneLib.cleanCargoSource ../.;
     strictDeps = true;
 
     buildInputs = [];

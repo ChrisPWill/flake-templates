@@ -14,6 +14,7 @@
     inputs.blueprint {
       inherit inputs;
 
+      prefix = "nix/";
       nixpkgs.overlays = [inputs.crane.overlays.default];
     };
 }
