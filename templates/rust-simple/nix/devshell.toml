@@ -1,0 +1,32 @@
+[devshell]
+packages = ["alejandra", "bacon", "miniserve"]
+motd = """
+{202}🔨 Welcome to devshell{reset}
+$(type -p menu &>/dev/null && menu)
+
+Check out 🥓 "bacon --list-jobs" for watch 👀 commands e.g.
+    bacon shell-hook -- nushell
+"""
+
+[[commands]]
+name = "fix"
+category = "linting"
+help = "Fix clippy, format Rust, TOML, Nix files"
+command = """\
+    cargo clippy --fix
+    cargo fmt
+    taplo fmt
+    nix fmt
+"""
+
+[[commands]]
+name = "lint"
+category = "linting"
+help = "Lint project"
+command = "nix flake check"
+
+[[commands]]
+name = "check"
+category = "linting"
+help = "Simple 'does it compile' check"
+command = "cargo check"

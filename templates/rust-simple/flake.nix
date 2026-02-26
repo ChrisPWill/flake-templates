@@ -7,6 +7,9 @@
     blueprint.url = "github:numtide/blueprint";
     blueprint.inputs.nixpkgs.follows = "nixpkgs";
 
+    devshell.url = "github:numtide/devshell";
+    devshell.inputs.nixpkgs.follows = "nixpkgs";
+
     crane.url = "github:ipetkov/crane";
   };
 
@@ -15,6 +18,9 @@
       inherit inputs;
 
       prefix = "nix/";
-      nixpkgs.overlays = [inputs.crane.overlays.default];
+      nixpkgs.overlays = [
+        inputs.crane.overlays.default
+        inputs.devshell.overlays.default
+      ];
     };
 }
