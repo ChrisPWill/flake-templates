@@ -1,4 +1,4 @@
-imports = [ "./devshells/base.toml" ]
+imports = [ "./base.toml" ]
 packages = ["bacon", "miniserve"]
 motd = """
 {202}🔨 Welcome to devshell{reset}
