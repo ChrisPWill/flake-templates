@@ -1,5 +1,5 @@
 [devshell]
-packages = ["alejandra", "bacon", "miniserve"]
+packages = ["alejandra", "bacon", "deadnix", "miniserve", "taplo", "treefmt"]
 motd = """
 {202}🔨 Welcome to devshell{reset}
 $(type -p menu &>/dev/null && menu)
@@ -12,12 +12,7 @@ Check out 🥓 "bacon --list-jobs" for watch 👀 commands e.g.
 name = "fix"
 category = "linting"
 help = "Fix clippy, format Rust, TOML, Nix files"
-command = """\
-    cargo clippy --fix
-    cargo fmt
-    taplo fmt
-    nix fmt
-"""
+command = "treefmt"
 
 [[commands]]
 name = "lint"

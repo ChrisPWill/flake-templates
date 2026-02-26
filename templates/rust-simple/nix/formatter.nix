@@ -6,10 +6,7 @@
   formatter = pkgs.writeShellApplication {
     name = pname;
 
-    runtimeInputs = with pkgs; [
-      deadnix
-      alejandra
-    ];
+    runtimeInputs = with pkgs; [];
 
     text = ''
       set -euo pipefail
@@ -22,9 +19,7 @@
 
       set -x
 
-      deadnix --no-lambda-pattern-names --edit "$@"
-
-      alejandra --quiet "$@"
+      nix develop --command treefmt "$@"
     '';
 
     meta = {

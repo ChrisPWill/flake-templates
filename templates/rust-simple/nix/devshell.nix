@@ -17,12 +17,5 @@
 in
   moldDevshellDevShell {
     inputsFrom = [devshell];
-    packages = with pkgs;
-      [
-        bacon
-        just
-        taplo
-        # miniserve
-      ]
-      ++ pkgs.lib.optionals pkgs.stdenv.isLinux [pkgs.gcc];
+    packages = [] ++ pkgs.lib.optionals pkgs.stdenv.isLinux [pkgs.gcc];
   }
