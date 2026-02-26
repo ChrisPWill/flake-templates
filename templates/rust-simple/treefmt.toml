@@ -63,9 +63,9 @@ command = "rustfmt"
 includes = ["*.rs"]
 priority = 1
 
-[formatter.taplo]
-command = "taplo"
-options = ["fmt"]
+[formatter.tombi]
+command = "tombi"
+options = ["format"]
 includes = ["*.toml"]
 
 [formatter.deadnix]

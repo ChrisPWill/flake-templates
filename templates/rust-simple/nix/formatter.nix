@@ -6,7 +6,15 @@
   formatter = pkgs.writeShellApplication {
     name = pname;
 
-    runtimeInputs = [];
+    runtimeInputs = with pkgs; [
+      treefmt
+      alejandra
+      cargo
+      clippy
+      rustfmt
+      deadnix
+      tombi
+    ];
 
     text = ''
       set -euo pipefail
@@ -19,7 +27,7 @@
 
       set -x
 
-      nix develop --command treefmt "$@"
+      treefmt "$@"
     '';
 
     meta = {
