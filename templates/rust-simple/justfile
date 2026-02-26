@@ -1,0 +1,16 @@
+# https://just.systems
+
+# Fix clippy, format Rust, TOML, Nix files
+fix:
+    cargo clippy --fix
+    cargo fmt
+    taplo fmt
+    nix fmt
+
+# Lint project
+lint:
+    nix flake check
+
+# Fast "does it compile" check
+check:
+    cargo check

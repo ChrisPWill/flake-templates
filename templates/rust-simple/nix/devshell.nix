@@ -1,6 +1,8 @@
 {
+  flake,
   pkgs,
   inputs,
+  system,
   ...
 }: let
   crane = inputs.crane;
@@ -16,8 +18,14 @@ in
     packages = with pkgs; [
       bacon
       just
+      taplo
       # miniserve
     ];
 
-    # NEXTEST_PROFILE = "local";
+    shellHook = ''
+      echo "Welcome to ${flake.packages.${system}.default.pname}!\n"
+
+      echo Use "just <recipe>" to run a common flow
+      just --list
+    '';
   }
