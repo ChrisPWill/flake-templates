@@ -5,12 +5,12 @@
 }: let
   crane = inputs.crane;
   craneLib = crane.mkLib pkgs;
-  commonArgs = import ./cargoCommonArgs.nix {inherit pkgs inputs;};
+  commonArgs = import ../cargoCommonArgs.nix {inherit pkgs inputs;};
 in
-  craneLib.buildPackage (
+  craneLib.cargoNextest (
     commonArgs
     // {
       cargoArtifacts = craneLib.buildDepsOnly commonArgs;
-      doCheck = false; # Using nextest
+      cargoNextestPartitionsExtraArgs = "--no-tests=pass";
     }
   )
