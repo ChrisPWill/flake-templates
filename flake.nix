@@ -1,20 +1,13 @@
 {
-  description = "Rust Template";
+  description = "Chris Williams' flake templates";
 
+  # Add all your dependencies here
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs?ref=nixos-unstable";
-
     blueprint.url = "github:numtide/blueprint";
     blueprint.inputs.nixpkgs.follows = "nixpkgs";
-
-    crane.url = "github:ipetkov/crane";
   };
 
-  outputs = inputs:
-    inputs.blueprint {
-      inherit inputs;
-
-      prefix = "nix/";
-      nixpkgs.overlays = [inputs.crane.overlays.default];
-    };
+  # Load the blueprint
+  outputs = inputs: inputs.blueprint {inherit inputs;};
 }
