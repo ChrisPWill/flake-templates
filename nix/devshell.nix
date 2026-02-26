@@ -5,8 +5,14 @@
 }: let
   crane = inputs.crane;
   craneLib = crane.mkLib pkgs;
+  moldDevShell = craneLib.devShell.override {
+    # For example, use the mold linker
+    mkShell = pkgs.mkShell.override {
+      stdenv = pkgs.stdenvAdapters.useMoldLinker pkgs.stdenv;
+    };
+  };
 in
-  craneLib.devShell {
+  moldDevShell {
     packages = with pkgs; [
       bacon
       just
