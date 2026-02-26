@@ -6,7 +6,7 @@
   formatter = pkgs.writeShellApplication {
     name = pname;
 
-    runtimeInputs = with pkgs; [];
+    runtimeInputs = [];
 
     text = ''
       set -euo pipefail
